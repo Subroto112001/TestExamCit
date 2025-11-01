@@ -1,38 +1,35 @@
-#Validation
-const { customError } = require("../utils/customError");
-const Joi = require("joi");
+
+# BackEnd Project Professional Template
+A clean and scalable backend architecture using **Node.js**, **Express.js**, and **MongoDB**
+with built-in authentication, environment variables, and modular folder organization.
+
+<hr>
+
+## 🚀 Tech Stack
+
+ Runtime               | Node.js 
+ Server Framework      | Express.js 
+ Database              | MongoDB + Mongoose
+ Env Config            | dotenv
+ Authentication        | JWT + Cookies 
 
 
-##DotEnv
-PORT = 5000
-USER_NAME =
-PASSWORD =
-MONGODB_URL = 
+## 📁 Folder Structure
 
-
-
-# api version
-
-BASE_URL = /api/v1
-
-
-# nodeENV
-NODE_ENV = development
-
-
-
-
-#app Pasword
-
-APP_PASSWORD = 
-APP_NAME = 
-
-
-
-
-#cloudinary
-
-CLOUDE_NAME = df8qz4g9h
-CLOUDE_API_KEYS = 835463198983294 
-CLOUDE_API_SECRET = Wp8kj1k6Qnk5bDWz8MHBfr2EIok
-
+│
+├── src/
+│ ├── constant/ # Database name
+│ ├── controllers/ # Business logic
+│ ├── database/ # Database & environment config
+│ ├── helpers/ # helpers Function
+│ ├── middlewares/ # middleware
+│ ├── models/ # Mongoose schemas
+│ ├── routes/ # Route definitions
+│ ├── utils/ # Helpers
+│ ├── validation/ # Schema Validation
+│ └── app.js # Express app setup 
+├── index.js 
+├── .env # Environment variables
+├── .gitignore
+├── package.json
+└── README.md
