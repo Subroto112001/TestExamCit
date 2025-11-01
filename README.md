@@ -18,18 +18,18 @@ with built-in authentication, environment variables, and modular folder organiza
 
 │
 ├── src/ <br>
-│ ├── constant/ # Database name
-│ ├── controllers/ # Business logic
-│ ├── database/ # Database & environment config
-│ ├── helpers/ # helpers Function
-│ ├── middlewares/ # middleware
-│ ├── models/ # Mongoose schemas
-│ ├── routes/ # Route definitions
-│ ├── utils/ # Helpers
-│ ├── validation/ # Schema Validation
-│ └── app.js # Express app setup 
-├── index.js 
-├── .env # Environment variables
-├── .gitignore
-├── package.json
-└── README.md
+│ ├── constant/ # Database name <br>
+│ ├── controllers/ # Business logic <br>
+│ ├── database/ # Database & environment config <br>
+│ ├── helpers/ # helpers Function <br>
+│ ├── middlewares/ # middleware <br>
+│ ├── models/ # Mongoose schemas <br>
+│ ├── routes/ # Route definitions <br>
+│ ├── utils/ # Helpers <br>
+│ ├── validation/ # Schema Validation <br>
+│ └── app.js # Express app setup  <br>
+├── index.js <br>
+├── .env # Environment variables <br>
+├── .gitignore <br>
+├── package.json <br>
+└── README.md <br>
