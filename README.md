@@ -17,7 +17,7 @@ with built-in authentication, environment variables, and modular folder organiza
 ## 📁 Folder Structure
 
 │
-├── src/
+├── src/ <br>
 │ ├── constant/ # Database name
 │ ├── controllers/ # Business logic
 │ ├── database/ # Database & environment config
