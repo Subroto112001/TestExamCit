@@ -82,13 +82,25 @@ NODE_ENV = development <br>
 APP_PASSWORD = ******* <br>
 APP_NAME = App name (google) <br>
 
-#### Cloudinary [If You use]
+#### *Cloudinary [If You use]
 
 CLOUDE_NAME = [NAME] <br>
 CLOUDE_API_KEYS =  ******* <br>
 CLOUDE_API_SECRET = ********************** <br>
 
-
+## index.js
+require("dotenv").config; <br>
+const { DbConection } = require("./src/database/db"); <br>
+const { server } = require("./src/app"); <br>
+DbConection() <br>
+  .then(() => {<br>
+    server.listen(process.env.PORT || 4000, () => {<br>
+      console.log(`Server Running on http://localhost:${process.env.PORT}`); <br>
+    }); <br>
+  }) <br>
+  .catch((err) => { <br>
+    console.log("database conection failed", err); <br>
+  }); <br>
 
 
 
