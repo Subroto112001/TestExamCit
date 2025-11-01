@@ -74,19 +74,19 @@ MONGO_URI=your_mongo_connection_string <br>
 BASE_URL = /api/v1 <br>
 
 #### *nodeENV
-NODE_ENV = development
+NODE_ENV = development <br>
 
 
 #### *APP Password
 
-APP_PASSWORD = *******
-APP_NAME = App name (google)
+APP_PASSWORD = ******* <br>
+APP_NAME = App name (google) <br>
 
 #### Cloudinary [If You use]
 
-CLOUDE_NAME = [NAME]
-CLOUDE_API_KEYS =  *******
-CLOUDE_API_SECRET = **********************
+CLOUDE_NAME = [NAME] <br>
+CLOUDE_API_KEYS =  ******* <br>
+CLOUDE_API_SECRET = ********************** <br>
 
 
 
