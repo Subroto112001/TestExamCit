@@ -1,18 +1,13 @@
-##Validation
+#Validation
 const { customError } = require("../utils/customError");
 const Joi = require("joi");
 
 
-##
-TestExamCit
-hvgw xuqz whpq oxif
-
-
 ##DotEnv
 PORT = 5000
-USER_NAME = subrotokumarbarman
-PASSWORD = 9yKL6c6IY3jDyScT
-MONGODB_URL = mongodb+srv://subrotokumarbarman:9yKL6c6IY3jDyScT@cluster0.hcutu4i.mongodb.net
+USER_NAME =
+PASSWORD =
+MONGODB_URL = 
 
 
 
@@ -29,8 +24,8 @@ NODE_ENV = development
 
 #app Pasword
 
-APP_PASSWORD = hvgw xuqz whpq oxif
-APP_NAME = TestExamCit
+APP_PASSWORD = 
+APP_NAME = 
 
 
 
