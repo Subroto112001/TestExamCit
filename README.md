@@ -249,6 +249,31 @@ exports.globalErrorHandeler = (error, req, res, next) => { <br>
 
 
 
+## Multer MIddleware
+### If you want to upload a photo to your database you need to use a middleware
+### I am using multer middleware 
+## src/ middleware / multer.middleware.js
+
+const multer = require("multer"); <br>
+
+/** <br>
+ *title : image store <br>
+ *@desc : now it will take the image in storage <br>
+ */<br>
+
+const storage = multer.diskStorage({ <br>
+  destination: function (req, file, cb) { <br>
+    cb(null, "./public/temp"); <br>
+  }, <br>
+  filename: function (req, file, cb) { <br>
+    cb(null, file.originalname); <br>
+  },<br>
+});<br>
+
+const upload = multer({<br>
+  storage: storage, <br>
+});<br>
+module.exports = { upload };<br>
 
 
 
