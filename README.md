@@ -176,6 +176,94 @@ exports.asyncHandeler = (func) => {  <br>
     }  <br>
 }  <br>
 
+## Custom Error Function 
+### src/utils/customError
+
+class customError extends Error{ <br>
+    constructor(statusCode, message) { <br>
+        super(message); <br>
+        this.statusCode = statusCode; <br>
+        this.status = statusCode >= 400 && statusCode < 500 ? "Client Error" : "Server Error" <br>
+        this.isOperationalError = true; <br>
+        this.message = message || "Server / Client Error"; <br>
+        this.data = null; <br>
+       Error.captureStackTrace(this, customError); <br>
+
+    }<br>
+}<br>
+
+
+module.exports = {customError} <br>
+
+
+## Global Error Handler
+### src/utils/globalErrorHandler
+
+
+require("dotenv").config(); <br>
+
+/** <br> 
+ * if it will development mode <br>
+ * */ <br>
+
+const development = (error, res) => { <br>
+  console.log(error);<br>
+  const statusCode = error.statusCode || 500;<br>
+  return res.status(statusCode).json({<br>
+    statusCode: error.statusCode,<br>
+    status: error.status,<br>
+    isOperationalError: error.isOperationalError, <br>
+    ErrortrackTrace: error.stack, <br>
+    message: error.message, <br>
+    data: error.data, <br>
+  }); <br>
+}; <br>
+
+/** <br>
+ *  if it will production mode <br>
+ * */<br>
+
+const production = (error, res) => { <br>
+  const statusCode = error.statusCode || 500; <br>
+  if (error.isOperationalError) { <br>
+    return res.status(statusCode).json({ <br>
+      statusCode: error.statusCode, <br>
+        status: error.status, <br>
+      message : error.message <br>
+    }); <br>
+  } else { <br>
+    return res.status(statusCode).json({ <br>
+      status: "!OK", <br>
+      message: "Something wrong, Try again later", <br>
+    }); <br>
+  } <br>
+}; <br>
+
+exports.globalErrorHandeler = (error, req, res, next) => { <br>
+  if (process.env.NODE_ENV == "development") { <br>
+    development(error, res); <br>
+  } else { <br>
+    production(error, res); <br>
+  } <br>
+};<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
