@@ -104,10 +104,61 @@ DbConection() <br>
 
 
 
+## app.js 
+
+
+const express = require("express");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const app = express();
+const http = require("http");
+const server = http.createServer(app);
+ * todo : All MidleWare
+app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("Public"));
+
+/**
+ * todo : routes will there
+ * */
+
+const apiVersion = process.env.BASE_URL;
+app.use(apiVersion, require("./routes/index"));
+
+/**
+ * todo : error handle midleware
+ * if you use global error handler to
+ * reecive error as a best format to understand
+ * use global error handler
+ * */
+
+app.use(globalErrorHandeler);
+
+module.exports = { server};
 
 
 
+## Api Response
+### If You need pass response to besy way 
+### you can make a custom api response function
+### here i am sharing a Custom api response
+## src/utils/apiResponse 
 
+class apiResponse {
+  constructor(status, message, data) {
+    this.status = status >= 200 && status < 300 ? "OK" : "Status Error";
+    this.statusCode = status || 500;
+    this.message = message || "Succes";
+    this.data = data;
+    }
+    static senSuccess(res, status, message, data) {
+        return res.status(status).json( new apiResponse(status, message, data))
+    }
+}
+
+
+module.exports = {apiResponse}
 
 
 
