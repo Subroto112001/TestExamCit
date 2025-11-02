@@ -107,35 +107,35 @@ DbConection() <br>
 ## app.js 
 
 
-const express = require("express");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-const app = express();
-const http = require("http");
-const server = http.createServer(app);
- * todo : All MidleWare
-app.use(express.json());
-app.use(cookieParser());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static("Public"));
+const express = require("express"); <br>
+const cors = require("cors"); <br>
+const cookieParser = require("cookie-parser"); <br>
+const app = express(); <br>
+const http = require("http"); <br>
+const server = http.createServer(app); <br>
+ * todo : All MidleWare <br>
+app.use(express.json());  <br>
+app.use(cookieParser());  <br>
+app.use(express.urlencoded({ extended: true }));  <br>
+app.use(express.static("Public"));  <br> <br>
 
 /**
- * todo : routes will there
+ * todo : routes will there  <br>
  * */
 
-const apiVersion = process.env.BASE_URL;
-app.use(apiVersion, require("./routes/index"));
+const apiVersion = process.env.BASE_URL;  <br>
+app.use(apiVersion, require("./routes/index"));  <br>
 
-/**
- * todo : error handle midleware
- * if you use global error handler to
- * reecive error as a best format to understand
- * use global error handler
- * */
+/**  <br>
+ * todo : error handle midleware  <br>
+ * if you use global error handler to  <br>
+ * reecive error as a best format to understand  <br>
+ * use global error handler  <br>
+ * */  <br>
 
-app.use(globalErrorHandeler);
+app.use(globalErrorHandeler);  <br>
 
-module.exports = { server};
+module.exports = { server};  <br>
 
 
 
@@ -145,23 +145,36 @@ module.exports = { server};
 ### here i am sharing a Custom api response
 ## src/utils/apiResponse 
 
-class apiResponse {
-  constructor(status, message, data) {
-    this.status = status >= 200 && status < 300 ? "OK" : "Status Error";
-    this.statusCode = status || 500;
-    this.message = message || "Succes";
-    this.data = data;
-    }
-    static senSuccess(res, status, message, data) {
-        return res.status(status).json( new apiResponse(status, message, data))
-    }
-}
+class apiResponse {  <br>
+  constructor(status, message, data) {  <br>
+    this.status = status >= 200 && status < 300 ? "OK" : "Status Error"; <br>
+    this.statusCode = status || 500;  <br>
+    this.message = message || "Succes";  <br>
+    this.data = data;  <br>
+    } <br>
+    static senSuccess(res, status, message, data) {  <br>
+        return res.status(status).json( new apiResponse(status, message, data))  <br>
+    }  <br>
+}  <br>
 
 
-module.exports = {apiResponse}
+module.exports = {apiResponse}  <br>
 
 
 
+
+## AsyncHandler
+### I will make a custom async function to make it more efficient
+## src/utils/asyncHandler
+exports.asyncHandeler = (func) => {  <br>
+    return async (req, res, next) => {  <br>
+        try {  <br>
+           await func(req, res)  <br> 
+        } catch (error) {  <br>
+            next(error);  <br>
+        }  <br>
+    }  <br>
+}  <br>
 
 
 
